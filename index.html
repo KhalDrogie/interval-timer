@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Interval Timer</title>
+<meta name="theme-color" content="#ff5a4f">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Timer">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="icon" href="icon-192.png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-view="setup">
+
+<main id="setup" class="view">
+  <header class="top">
+    <button id="menuBtn" class="icon-btn" aria-label="Einstellungen">
+      <svg viewBox="0 0 24 24" width="28" height="28"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></svg>
+    </button>
+    <h1>Interval Timer</h1>
+  </header>
+
+  <div class="hero">
+    <div id="totalTime" class="big">01:00</div>
+    <div id="totalHint" class="hint">Gesamtdauer</div>
+  </div>
+
+  <section class="panel">
+    <button id="startBtn" class="play" aria-label="Start">
+      <svg viewBox="0 0 24 24" width="44" height="44"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z" fill="currentColor"/></svg>
+    </button>
+    <div class="rows">
+      <button class="row row-load" id="loadRow">
+        <svg class="ico" viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M3.5 10h17M8 3v4M16 3v4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        <span class="label" id="loadLabel">Workouts</span>
+        <span class="value">»</span>
+      </button>
+      <button class="row row-work" data-field="arbeit">
+        <svg class="ico" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M10 8.2v7.6l6-3.8z" fill="currentColor"/></svg>
+        <span class="label">Arbeit</span><span class="value" data-value="arbeit"></span>
+      </button>
+      <button class="row row-rest" data-field="pause">
+        <svg class="ico" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M10 8.5v7M14 8.5v7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        <span class="label">Pause</span><span class="value" data-value="pause"></span>
+      </button>
+      <button class="row row-ex" data-field="uebungen">
+        <svg class="ico" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M13 6.5 8.5 13H12l-1 4.5 4.5-6.5H12z" fill="currentColor"/></svg>
+        <span class="label">Übungen</span><span class="value" data-value="uebungen"></span>
+      </button>
+      <button class="row row-rounds" data-field="runden">
+        <svg class="ico" viewBox="0 0 24 24"><path d="M19.5 12a7.5 7.5 0 1 1-2.2-5.3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M18 3v4.5h-4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span class="label">Runden</span><span class="value" data-value="runden"></span>
+      </button>
+      <button class="row row-roundrest" data-field="rundenpause">
+        <svg class="ico" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 7v5.5h4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span class="label">Rundenpause</span><span class="value" data-value="rundenpause"></span>
+      </button>
+    </div>
+  </section>
+</main>
+
+<main id="run" class="view">
+  <div class="run-top">
+    <span id="runRound"></span>
+    <span id="runTotal"></span>
+  </div>
+  <div class="run-center">
+    <div id="phaseLabel"></div>
+    <div id="countdown" class="big"></div>
+    <div id="runInfo"></div>
+    <div id="runNext"></div>
+  </div>
+  <div class="run-controls">
+    <button id="stopBtn" class="ctl">Abbrechen</button>
+    <button id="pauseBtn" class="play" aria-label="Pause"></button>
+    <button id="skipBtn" class="ctl">Weiter »</button>
+  </div>
+</main>
+
+<div id="backdrop" hidden></div>
+<section id="sheet" class="sheet" role="dialog" aria-modal="true" hidden>
+  <h2 id="sheetTitle"></h2>
+  <div id="sheetBody"></div>
+  <button id="sheetDone" class="primary">Fertig</button>
+</section>
+
+<script src="audio.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
